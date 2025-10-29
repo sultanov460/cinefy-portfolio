@@ -4,6 +4,19 @@
   --color-primary: #f6be00;
   --color-body: rgb(16, 16, 16);
 }
+
 body {
   @apply bg-body text-white;
+}
+
+.titleLine::after {
+  content: '';
+  width: 150px;
+  height: 2px;
+  background: #f6be00;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
 }
