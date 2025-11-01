@@ -4,18 +4,35 @@ import { MovieCard } from "./MovieCard";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import { useEffect } from "react";
+import { Series } from "@/types/series";
+import { SeriesCard } from "@/widgets/SeriesCard";
 
 interface MovieSectionProps {
-  movies: Movie[];
+  movies: Movie[] | Series[];
+  title: string;
 }
 
-export const MovieSection = ({ movies }: MovieSectionProps) => {
+export const MovieSection = ({ movies, title }: MovieSectionProps) => {
   const [sliderRef, slider] = useKeenSlider({
     loop: true,
     mode: "free-snap",
     slides: {
       perView: 4,
       spacing: 16,
+    },
+    breakpoints: {
+      "(min-width:300px)": {
+        slides: { perView: 1, spacing: 20 },
+      },
+      "(min-width:500px)": {
+        slides: { perView: 2, spacing: 20 },
+      },
+      "(min-width:840px)": {
+        slides: { perView: 3, spacing: 24 },
+      },
+      "(min-width:1280px)": {
+        slides: { perView: 4, spacing: 16 },
+      },
     },
   });
 
@@ -29,12 +46,16 @@ export const MovieSection = ({ movies }: MovieSectionProps) => {
   return (
     <div className="flex flex-col gap-4 mt-20 mx-5 ">
       <h1 className="font-bold text-3xl md:text-5xl text-center md:text-left tracking-[3px]">
-        Trending movies
+        {title}
       </h1>
       <div ref={sliderRef} className="keen-slider">
-        {movies.map((movie) => (
+        {movies.map((movie: Movie | Series) => (
           <div key={movie.id} className="keen-slider__slide">
-            <MovieCard movie={movie} />
+            {movie.media_type === "movie" ? (
+              <MovieCard movie={movie as Movie} />
+            ) : (
+              <SeriesCard series={movie as Series} />
+            )}
           </div>
         ))}
       </div>

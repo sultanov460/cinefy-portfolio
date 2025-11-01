@@ -1,14 +1,15 @@
 import { getTrendingMovies } from "@/utils/movies";
+import { getTrendingSeries } from "@/utils/series";
 import { MovieSection } from "@/widgets/MovieSection";
 
 const Home = async () => {
   const { results: trendingMovies } = await getTrendingMovies();
-
-  console.log(trendingMovies);
+  const { results: trendingSeries } = await getTrendingSeries();
 
   return (
     <>
-      <MovieSection movies={trendingMovies} />
+      <MovieSection movies={trendingMovies} title={"Trending movies"} />
+      <MovieSection movies={trendingSeries} title={"Trending series"} />
     </>
   );
 };

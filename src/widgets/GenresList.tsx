@@ -1,5 +1,5 @@
 "use client";
-import { Genre } from "@/types/movies";
+import { Genre } from "@/types/types";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 interface GenresListProps {
