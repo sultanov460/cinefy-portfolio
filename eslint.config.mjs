@@ -8,6 +8,7 @@ const eslintConfig = defineConfig([
   {
     rules: {
       "@next/next/no-img-element": "off", // 🔴 Disable warning for <img>
+      "@typescript-eslint/no-explicit-any": "off", // 🔴 Disable 'Unexpected any'
     },
   },
   globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts"]),

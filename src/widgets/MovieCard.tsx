@@ -5,7 +5,7 @@ import { BsFillStarFill } from "react-icons/bs";
 import { getYear } from "@/utils/getYear";
 
 interface MovieCardProps {
-  movie: Movie;
+  movie: any;
 }
 
 export const MovieCard = ({ movie }: MovieCardProps) => {

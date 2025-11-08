@@ -15,3 +15,5 @@ export interface Series {
   vote_count: number;
   media_type: string;
 }
+
+export interface SeriesDetails {}
