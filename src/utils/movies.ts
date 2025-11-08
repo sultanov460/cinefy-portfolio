@@ -46,3 +46,14 @@ export async function getMovieByGenre(id: string) {
     console.error("Error fetching movies by genre", e);
   }
 }
+
+export async function getSimilarMovies(id: number) {
+  try {
+    const res = await axios.get(
+      `${BASE_URL}/movie/${id}/recommendations?api_key=${API_KEY}`
+    );
+    return res.data;
+  } catch (e) {
+    console.error("Error fetching similar movies", e);
+  }
+}

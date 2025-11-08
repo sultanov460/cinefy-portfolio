@@ -51,22 +51,6 @@ export const MovieContent = ({ movie }: MovieContentProps) => {
       {movie.overview && (
         <p className="text-center text-xl font-medium">{movie.overview}</p>
       )}
-      <div className="mt-20 text-4xl font-bold">
-        <h1 className="text-center">Actors</h1>
-        <div className="flex gap-3 flex-wrap items-center justify-center">
-          {movie.credits.cast.map((author) => (
-            <div key={author.id} className="mt-10">
-              <img
-                src={
-                  "https://www.themoviedb.org/t/p/w300" + author.profile_path
-                }
-                alt={author.name}
-                className="rounded-xl w-25"
-              />
-            </div>
-          ))}
-        </div>
-      </div>
     </Container>
   );
 };
