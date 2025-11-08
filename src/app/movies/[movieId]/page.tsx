@@ -1,6 +1,6 @@
 import { getMovieDetails } from "@/utils/movies";
 import { notFound } from "next/navigation";
-import React from "react";
+
 import { MovieContent } from "../widgets/MovieContent";
 interface MovieDetailsProps {
   params: Promise<{ movieId: string }>;
