@@ -28,7 +28,7 @@ const Home = async () => {
   // 5:Create a mobile version for the whole website (Dz)
   // 6:Implement searching for movies/series
   // 7:Create a third movie section in the home page
-  // 8:Create a favicon for the website (generate in Canva) (Dz)
+  // 8:Change dynamic folder actorId to personId
 
   return (
     <>

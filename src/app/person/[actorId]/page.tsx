@@ -8,6 +8,14 @@ interface PersonDetailsProps {
   params: Promise<{ actorId: string }>;
 }
 
+export async function generateMetadata({ params }: PersonDetailsProps) {
+  const { actorId } = await params;
+  const actor = await getPersonDetails(actorId);
+  return {
+    title: actor.name,
+  };
+}
+
 const PersonDetails = async ({ params }: PersonDetailsProps) => {
   const { actorId } = await params;
 
