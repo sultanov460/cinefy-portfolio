@@ -1,7 +1,8 @@
 import { getPersonDetails } from "@/utils/person";
-import { ActorDetail } from "../widgets/ActorDetail";
+import { ActorDetails } from "../widgets/ActorDetails";
 import { notFound } from "next/navigation";
-import ActorCast from "../widgets/ActorCast";
+import OtherMovies from "../widgets/OtherMovies";
+import { Person } from "@/types/actors";
 
 interface PersonDetailsProps {
   params: Promise<{ actorId: string }>;
@@ -10,7 +11,7 @@ interface PersonDetailsProps {
 const PersonDetails = async ({ params }: PersonDetailsProps) => {
   const { actorId } = await params;
 
-  const actor = await getPersonDetails(actorId);
+  const actor: Person = await getPersonDetails(actorId);
 
   if (!actor) return notFound();
 
@@ -18,8 +19,8 @@ const PersonDetails = async ({ params }: PersonDetailsProps) => {
 
   return (
     <div>
-      <ActorDetail actor={actor} />
-      <ActorCast actorCast={actorCast} />
+      <ActorDetails actor={actor} />
+      <OtherMovies actorCast={actorCast} gender={actor.gender} />
     </div>
   );
 };

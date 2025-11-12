@@ -1,11 +1,14 @@
 import { Container } from "@/app/components/Container";
-import { ActorDetails } from "@/types/actors";
+import { Person } from "@/types/actors";
+import getAge from "@/utils/getAge";
+import getAgeOfDeath from "@/utils/getAgeOfDeath";
+import { Content } from "next/font/google";
 
 interface ActorDetailsProps {
-  actor: ActorDetails;
+  actor: Person;
 }
 
-export const ActorDetail = ({ actor }: ActorDetailsProps) => {
+export const ActorDetails = ({ actor }: ActorDetailsProps) => {
   return (
     <Container className="flex flex-col items-center justify-center gap-10 mb-20">
       <div className="flex gap-12 items-center">
@@ -22,12 +25,17 @@ export const ActorDetail = ({ actor }: ActorDetailsProps) => {
           </div>
           <div className="flex flex-col gap-2.5">
             <p className="text-[#ccc]">Date of birth:</p>
-            <p>{actor.birthday}</p>
+            <p>
+              {actor.birthday} ({!actor.deathday && getAge(actor.birthday)})
+            </p>
           </div>
           {actor.deathday && (
             <div className="flex flex-col gap-2.5">
               <p className="text-[#ccc]">Date of death:</p>
-              <p>{actor.deathday}</p>
+              <p>
+                {actor.deathday} (
+                {getAgeOfDeath(actor.birthday, actor.deathday)})
+              </p>
             </div>
           )}
           <div className="flex flex-col gap-2.5">
