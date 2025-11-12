@@ -9,6 +9,7 @@ interface MovieDetailsProps {
 const MovieDetails = async ({ params }: MovieDetailsProps) => {
   const { movieId } = await params;
   const movie = await getMovieDetails(movieId);
+
   if (!movie) {
     return notFound();
   }
@@ -16,7 +17,6 @@ const MovieDetails = async ({ params }: MovieDetailsProps) => {
   const { cast } = movie.credits;
 
   const { results: similarMovies } = await getSimilarMovies(movie.id);
-  console.log(similarMovies);
 
   return (
     <>
