@@ -6,10 +6,21 @@ const BASE_URL = process.env.NEXT_PUBLIC_TMDB_BASE_URL;
 export async function getTrendingSeries() {
   try {
     const res = await axios.get(
-      `${BASE_URL}/trending/tv/week?language=en&api_key=${API_KEY}`,
+      `${BASE_URL}/trending/tv/week?language=en&api_key=${API_KEY}`
     );
     return res.data;
   } catch (e) {
     console.error("Error fetching trending series", e);
+  }
+}
+
+export async function getSeriesDetails(id: string) {
+  try {
+    const res = await axios.get(
+      `${BASE_URL}/tv/${id}?language=en-US&append_to_response=credits&api_key=${API_KEY}`
+    );
+    return res.data;
+  } catch (error) {
+    console.log(error);
   }
 }

@@ -1,6 +1,6 @@
 export default function getAge(dateString: string): number {
-  // Parse the date string (YYYY-DD-MM format)
-  const [year, day, month] = dateString.split("-").map(Number);
+  // Parse the date string (YYYY-MM-DD format)
+  const [year, month, day] = dateString.split("-").map(Number);
   const birthDate = new Date(year, month - 1, day);
 
   const today = new Date();

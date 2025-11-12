@@ -17,6 +17,8 @@ const PersonDetails = async ({ params }: PersonDetailsProps) => {
 
   const actorCast = actor.credits.cast ?? [];
 
+  console.log(actor);
+
   return (
     <div>
       <ActorDetails actor={actor} />

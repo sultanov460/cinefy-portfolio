@@ -57,3 +57,14 @@ export async function getSimilarMovies(id: number) {
     console.error("Error fetching similar movies", e);
   }
 }
+
+export async function getMovieVideo(id: string) {
+  try {
+    const res = await axios.get(
+      `${BASE_URL}/movie/${id}/videos?language=en-US&api_key=${API_KEY}`
+    );
+    return res.data;
+  } catch (e) {
+    console.error("Error fetching similar movies", e);
+  }
+}
