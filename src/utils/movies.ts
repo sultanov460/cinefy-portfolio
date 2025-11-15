@@ -68,3 +68,15 @@ export async function getMovieVideo(id: string) {
     console.error("Error fetching similar movies", e);
   }
 }
+
+export async function getUpcomingMovies (){
+  try {
+    const res = await axios.get(
+        `${BASE_URL}/movie/upcoming?language=en-US&page=1
+            &api_key=${API_KEY}`
+    );
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};

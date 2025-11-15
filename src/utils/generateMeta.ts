@@ -15,7 +15,7 @@ export const generateMeta = ({
       title: name,
       description,
       url,
-      siteName: "AIM Digital Agency",
+      siteName: "Cinefy",
       images: [
         {
           url: image,

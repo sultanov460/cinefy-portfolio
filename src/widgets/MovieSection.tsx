@@ -51,10 +51,10 @@ export const MovieSection = ({ movies, title }: MovieSectionProps) => {
       <div ref={sliderRef} className="keen-slider">
         {movies.map((movie: Movie | Series) => (
           <div key={movie.id} className="keen-slider__slide">
-            {movie.media_type === "movie" ? (
-              <MovieCard movie={movie as Movie} />
-            ) : (
+            {movie.media_type === "tv" ? (
               <SeriesCard series={movie as Series} />
+            ) : (
+              <MovieCard movie={movie as Movie} />
             )}
           </div>
         ))}
