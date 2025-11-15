@@ -22,14 +22,10 @@ const Home = async () => {
   const { results: trendingMovies } = await getTrendingMovies();
   const { results: trendingSeries } = await getTrendingSeries();
   // TODO:
-  // 2: Fix the bug of the actors birthday being null
-  // 4:Create a details page for series (Dz)
-  // 5:Create a mobile version for the whole website (Dz)
-  // 6:Implement searching for movies/series
-  // 7:Create a third movie section in the home page
-  // 8:Change dynamic folder actorId to personId
-  // 9:Deploy the website
-  // 10:Fix the bug in slide
+  // 1:Create a mobile version for the whole website (Dz)
+  // 2:Implement searching for movies/series
+  // 3:Fix the bug in slide
+  // 4: Create a hero section in home page
 
   return (
     <>
