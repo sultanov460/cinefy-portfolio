@@ -24,3 +24,29 @@ export async function getSeriesDetails(id: string) {
     console.log(error);
   }
 }
+
+export async function getSimilarSeries(seriesId: string) {
+  try {
+    const res = await axios.get(
+      `${BASE_URL}/tv/${seriesId}/similar?language=en-US&api_key=${API_KEY}`
+    );
+
+    return res.data;
+  } catch (e) {
+    console.error("Error fetching similar series", e);
+    return [];
+  }
+}
+
+export async function getSeriesVideo(seriesId: string) {
+  try {
+    const res = await axios.get(
+      `${BASE_URL}/tv/${seriesId}/videos?language=en-US&api_key=${API_KEY}`
+    );
+
+    return res.data;
+  } catch (e) {
+    console.error("Error fetching series videos", e);
+    return [];
+  }
+}

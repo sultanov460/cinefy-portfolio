@@ -2,7 +2,6 @@ import { Container } from "@/app/components/Container";
 import { Person } from "@/types/actors";
 import getAge from "@/utils/getAge";
 import getAgeOfDeath from "@/utils/getAgeOfDeath";
-import { Content } from "next/font/google";
 
 interface ActorDetailsProps {
   actor: Person;

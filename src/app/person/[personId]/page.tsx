@@ -5,21 +5,21 @@ import OtherMovies from "../widgets/OtherMovies";
 import { Person } from "@/types/actors";
 
 interface PersonDetailsProps {
-  params: Promise<{ actorId: string }>;
+  params: Promise<{ personId: string }>;
 }
 
 export async function generateMetadata({ params }: PersonDetailsProps) {
-  const { actorId } = await params;
-  const actor = await getPersonDetails(actorId);
+  const { personId } = await params;
+  const actor = await getPersonDetails(personId);
   return {
     title: actor.name,
   };
 }
 
 const PersonDetails = async ({ params }: PersonDetailsProps) => {
-  const { actorId } = await params;
+  const { personId } = await params;
 
-  const actor: Person = await getPersonDetails(actorId);
+  const actor: Person = await getPersonDetails(personId);
 
   if (!actor) return notFound();
 
