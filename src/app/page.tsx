@@ -1,8 +1,9 @@
 import { generateMeta } from "@/utils/generateMeta";
-import {getTrendingMovies, getUpcomingMovies} from "@/utils/movies";
+import { getTrendingMovies, getUpcomingMovies } from "@/utils/movies";
 import { getTrendingSeries } from "@/utils/series";
+import Hero from "@/widgets/Hero";
 import { MovieSection } from "@/widgets/MovieSection";
-import {Metadata} from "next";
+import { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
@@ -20,11 +21,15 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const Home = async () => {
-const trendingMoviesData = getTrendingMovies();
-const trendingSeriesData = getTrendingSeries();
-const upcomingMoviesData = getUpcomingMovies();
+  const trendingMoviesData = getTrendingMovies();
+  const trendingSeriesData = getTrendingSeries();
+  const upcomingMoviesData = getUpcomingMovies();
 
-const [trendingMovies, trendingSeries, upcomingMovies] = await Promise.all([trendingMoviesData, trendingSeriesData, upcomingMoviesData])
+  const [trendingMovies, trendingSeries, upcomingMovies] = await Promise.all([
+    trendingMoviesData,
+    trendingSeriesData,
+    upcomingMoviesData,
+  ]);
 
   // TODO:
   // 1:Create a mobile version for the whole website (Dz)
@@ -34,6 +39,7 @@ const [trendingMovies, trendingSeries, upcomingMovies] = await Promise.all([tren
 
   return (
     <>
+      <Hero />
       <MovieSection movies={trendingMovies.results} title={"Trending movies"} />
       <MovieSection movies={trendingSeries.results} title={"Trending series"} />
       <MovieSection movies={upcomingMovies.results} title={"Upcoming movies"} />
