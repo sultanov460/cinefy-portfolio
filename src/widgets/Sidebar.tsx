@@ -2,6 +2,7 @@ import { getMovieGenres } from "@/utils/movies";
 import Link from "next/link";
 import GenresList from "./GenresList";
 import SidebarSocials from "./SidebarSocials";
+import SearchBar from "./SearchBar";
 
 const Sidebar = async () => {
   const { genres } = await getMovieGenres();
@@ -11,11 +12,7 @@ const Sidebar = async () => {
       <Link href={"/"} className="font-bold text-5xl px-5">
         Cin<span className="text-primary">efy</span>
       </Link>
-      <input
-        type="text"
-        placeholder="Search..."
-        className="mx-5 p-3 rounded-2xl outline-none bg-[#363636]"
-      />
+      <SearchBar />
       <GenresList genres={genres} />
       <SidebarSocials />
       <span className="text-center">&copy; Copyright 2025</span>
