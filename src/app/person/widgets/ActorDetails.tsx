@@ -25,7 +25,8 @@ export const ActorDetails = ({ actor }: ActorDetailsProps) => {
           <div className="flex flex-col gap-2.5">
             <p className="text-[#ccc]">Date of birth:</p>
             <p>
-              {actor.birthday} ({!actor.deathday && getAge(actor.birthday)})
+              {actor.birthday ?? "Unknown"} (
+              {actor.birthday && !actor.deathday && getAge(actor.birthday)})
             </p>
           </div>
           {actor.deathday && (
@@ -33,7 +34,9 @@ export const ActorDetails = ({ actor }: ActorDetailsProps) => {
               <p className="text-[#ccc]">Date of death:</p>
               <p>
                 {actor.deathday} (
-                {getAgeOfDeath(actor.birthday, actor.deathday)})
+                {actor.birthday &&
+                  getAgeOfDeath(actor.birthday, actor.deathday)}
+                )
               </p>
             </div>
           )}
