@@ -33,8 +33,11 @@ const Home = async () => {
 
   // TODO:
   // 1:Create a mobile version for the whole website (Dz)
-  // 2:Implement searching for movies/series
   // 3:Fix the bug in slide
+  // 4: Create a function for multi searching in API (exlude actors)
+  // 5: Fetch the results from the 4 task in /search/[slug] and display
+
+  // 4 and 5 tasks should be inside of one branch (one PR)
 
   return (
     <>
