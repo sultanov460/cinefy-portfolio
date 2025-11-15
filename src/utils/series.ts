@@ -25,18 +25,16 @@ export async function getSeriesDetails(id: string) {
   }
 }
 
-export async function getSimilarSeries(seriesId: string) {
+export async function getSimilarSeries (id: string)  {
   try {
     const res = await axios.get(
-      `${BASE_URL}/tv/${seriesId}/similar?language=en-US&api_key=${API_KEY}`
+        `${BASE_URL}/tv/${id}/recommendations?api_key=${API_KEY}`,
     );
-
     return res.data;
-  } catch (e) {
-    console.error("Error fetching similar series", e);
-    return [];
+  } catch (error) {
+    console.log(error);
   }
-}
+};
 
 export async function getSeriesVideo(seriesId: string) {
   try {

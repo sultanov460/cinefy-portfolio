@@ -27,11 +27,11 @@ export const SeriesContent = ({ series }: SeriesContentProps) => {
               {series.number_of_seasons}
               {series.number_of_seasons > 1 ? " seasons" : " season"}
             </p>
-            <p>{series.first_air_date}</p>§
+            <p>{series.first_air_date}</p>
           </div>
           <div className="flex gap-5 text-[#ccc]">
             {series.genres.map((genre) => (
-              <Link key={genre.id} href={`/genre/${genre.id} `}>
+              <Link className='xl:hover:text-primary xl:hover:underline font-medium' key={genre.id} href={`/genre/${genre.id} `}>
                 {genre.name}
               </Link>
             ))}
@@ -45,7 +45,7 @@ export const SeriesContent = ({ series }: SeriesContentProps) => {
           {series.status && (
             <div>
               <span className="text-[#ccc]">Status: </span>
-              {series.status}
+              <span className='text-lg font-medium'>{series.status}</span>
             </div>
           )}
         </div>
