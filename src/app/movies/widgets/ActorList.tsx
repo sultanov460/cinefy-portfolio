@@ -1,6 +1,6 @@
 "use client";
-import { Button } from "@/app/components/Button";
-import { Container } from "@/app/components/Container";
+import { Button } from "@/components/Button";
+import { Container } from "@/components/Container";
 import { Cast } from "@/types/movies";
 import Link from "next/link";
 import { useState } from "react";
