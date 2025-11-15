@@ -1,24 +1,39 @@
-import { getMovieDetails } from "@/utils/movies";
 import { notFound } from "next/navigation";
 import { SeriesContent } from "../widgets/SeriesContent";
-import { getSeriesDetails } from "@/utils/series";
+import {
+  getSeriesDetails,
+  getSeriesVideo,
+  getSimilarSeries,
+} from "@/utils/series";
+import ActorList from "@/app/movies/widgets/ActorList";
+import SimilarSeries from "../widgets/SimilarSeries";
+import {Trailer} from "@/app/movies/widgets/Trailer";
 
 interface SeriesDetailsProps {
   params: Promise<{ seriesId: string }>;
 }
 const SeriesDetails = async ({ params }: SeriesDetailsProps) => {
   const { seriesId } = await params;
-  console.log("seriesId", seriesId);
+
   const series = await getSeriesDetails(seriesId);
-  console.log("series", series);
+  const video = await getSeriesVideo(seriesId);
+
   if (!series) {
     return notFound();
   }
 
+  const { cast } = series.credits;
+
+  const { results: similarSeries } = await getSimilarSeries(seriesId);
+
+
   return (
-    <div>
+    <>
       <SeriesContent series={series} />
-    </div>
+      <ActorList cast={cast} />
+      <Trailer results={video.results} />
+      <SimilarSeries similarSeries={similarSeries} />
+    </>
   );
 };
 

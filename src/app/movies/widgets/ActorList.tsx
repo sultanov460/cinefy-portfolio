@@ -16,16 +16,18 @@ const ActorList = ({ cast }: ActorListProps) => {
     <div className="py-20">
       <h1 className="text-center font-bold mb-8 text-5xl">Actors</h1>
       <Container className="flex gap-4 flex-wrap items-center justify-center">
-        {cast.slice(0, showMore).map((actor) => (
+        {cast.slice(0, showMore).map((person) => (
           <Link
-            href={`/person/${actor.id}`}
-            key={actor.id}
+            href={`/person/${person.id}`}
+            key={person.id}
             className="mt-10 w-25"
           >
-            {actor.profile_path ? (
+            {person.profile_path ? (
               <img
-                src={"https://www.themoviedb.org/t/p/w300" + actor.profile_path}
-                alt={actor.name}
+                src={
+                  "https://www.themoviedb.org/t/p/w300" + person.profile_path
+                }
+                alt={person.name}
                 className="rounded-xl"
               />
             ) : (
@@ -34,7 +36,7 @@ const ActorList = ({ cast }: ActorListProps) => {
               </div>
             )}
             <h1 className="mt-1 font-semibold text-sm w-full whitespace-nowrap text-ellipsis overflow-hidden">
-              {actor.original_name}
+              {person.original_name}
             </h1>
           </Link>
         ))}

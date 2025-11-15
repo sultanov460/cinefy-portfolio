@@ -2,7 +2,6 @@ import { Container } from "@/app/components/Container";
 import { Person } from "@/types/actors";
 import getAge from "@/utils/getAge";
 import getAgeOfDeath from "@/utils/getAgeOfDeath";
-import { Content } from "next/font/google";
 
 interface ActorDetailsProps {
   actor: Person;
@@ -21,31 +20,36 @@ export const ActorDetails = ({ actor }: ActorDetailsProps) => {
           <h1 className="text-4xl font-bold">{actor.name}</h1>
           <div className="flex flex-col gap-2.5">
             <p className="text-[#ccc]">Known for:</p>
-            <p>{actor.known_for_department}</p>
+            <p className="font-semibold text-xl">
+              {actor.known_for_department}
+            </p>
           </div>
           <div className="flex flex-col gap-2.5">
             <p className="text-[#ccc]">Date of birth:</p>
-            <p>
-              {actor.birthday} ({!actor.deathday && getAge(actor.birthday)})
+            <p className="font-semibold text-xl">
+              {actor.birthday ?? "Unknown"} (
+              {actor.birthday && !actor.deathday && getAge(actor.birthday)})
             </p>
           </div>
           {actor.deathday && (
             <div className="flex flex-col gap-2.5">
               <p className="text-[#ccc]">Date of death:</p>
-              <p>
+              <p className="font-semibold text-xl">
                 {actor.deathday} (
-                {getAgeOfDeath(actor.birthday, actor.deathday)})
+                {actor.birthday &&
+                  getAgeOfDeath(actor.birthday, actor.deathday)}
+                )
               </p>
             </div>
           )}
           <div className="flex flex-col gap-2.5">
             <p className="text-[#ccc]">Place of born:</p>
-            <p>{actor.place_of_birth}</p>
+            <p className="font-semibold text-xl">{actor.place_of_birth}</p>
           </div>
         </div>
       </div>
       <div>
-        <p className="text-center">{actor.biography}</p>
+        <p className="text-center font-medium text-lg">{actor.biography}</p>
       </div>
     </Container>
   );
