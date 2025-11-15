@@ -1,4 +1,4 @@
-import { Container } from "@/app/components/Container";
+import { Container } from "@/components/Container";
 import { MovieDetails } from "@/types/movies";
 import Link from "next/link";
 import { BsFillStarFill } from "react-icons/bs";

@@ -35,7 +35,9 @@ const Home = async () => {
   // 1:Create a mobile version for the whole website (Dz)
   // 2:Implement searching for movies/series
   // 3:Fix the bug in slide
-  // 4: Create a hero section in home page
+  // 4: Create a widget for input in sidebar (should return form with input)
+  // 5: Create a dynamic /search/[slug] page which just returns the title as in my deployed version and also the slug
+  // 6: Create a route.ts file with get request that returns us a hello world message (/api/multi-search)
 
   return (
     <>
