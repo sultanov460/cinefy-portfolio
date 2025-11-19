@@ -32,7 +32,7 @@ export const MovieCard = ({ movie }: MovieCardProps) => {
           <BsFillStarFill size={15} />
         </span>
         <span className="font-medium bg-[#363636] py-1 px-3 rounded-xl">
-          {getYear(movie.release_date)}
+          {movie.release_date ? getYear(movie.release_date) : 'No info'}
         </span>
       </div>
     </Link>

@@ -15,6 +15,8 @@ const SearchPage = async ({ params }: SearchPageProps) => {
 
   const results = await multiSearch(slug);
 
+  console.log(results)
+
   return (
     <div>
       <h1 className="text-center text-5xl mt-10 font-semibold tracking-[1px]">
@@ -34,9 +36,9 @@ const SearchPage = async ({ params }: SearchPageProps) => {
       >
         {results.map((item: Movie | Series) =>
           item.media_type === "movie" ? (
-            <MovieCard key={item.id} movie={item} />
+            <MovieCard key={item.id} movie={item as Movie} />
           ) : (
-            <SeriesCard key={item.id} series={item} />
+            <SeriesCard key={item.id} series={item as Series} />
           )
         )}
       </div>
