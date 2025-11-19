@@ -8,11 +8,19 @@ interface SimilarSeriesProps {
 const SimilarSeries = ({ similarSeries }: SimilarSeriesProps) => {
   return (
     <div className="py-20 ">
-      <h1 className="text-5xl mb-12 font-bold text-center">Similar Series</h1>
+      {similarSeries.length > 0 && (
+        <h1 className="text-5xl mb-12 font-bold text-center">Similar Movies</h1>
+      )}
       <div className="flex flex-wrap justify-center gap-8 items-center">
-        {similarSeries.slice(0, 12).map((series) => (
-          <SeriesCard key={series.id} series={series} />
-        ))}
+        {similarSeries && similarSeries.length > 0 ? (
+          similarSeries.map((series) => (
+            <SeriesCard key={series.id} series={series} />
+          ))
+        ) : (
+          <div className="my-20 text-center text-gray-400 text-4xl">
+            No Similar Series Available.
+          </div>
+        )}
       </div>
     </div>
   );
