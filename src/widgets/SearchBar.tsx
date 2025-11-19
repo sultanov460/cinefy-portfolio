@@ -3,7 +3,7 @@ import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { FaSearch } from "react-icons/fa";
 
-const SearchBar = () => {
+const SearchBar = ({ closeSidebar }: { closeSidebar: () => void }) => {
   const [searchValue, setSearchValue] = useState("");
   const router = useRouter();
 
@@ -13,22 +13,28 @@ const SearchBar = () => {
       return alert("Please enter a search query");
 
     router.push(`/search/${searchValue}`);
-
     setSearchValue("");
+
+    closeSidebar();
   };
+
   return (
-    <form onSubmit={handleSearch} className="relative">
+    <form onSubmit={handleSearch} className="relative w-full">
       <input
         type="text"
         placeholder="Search..."
-        className="mx-5 p-3 rounded-2xl outline-none bg-[#363636]"
+        className="p-3 pr-12 w-full rounded-2xl outline-none bg-[#363636]"
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
       />
-      <button>
+
+      <button
+        type="submit"
+        className="absolute top-1/2 right-4 -translate-y-1/2"
+      >
         <FaSearch
           size={20}
-          className="absolute right-8 bottom-3.5 hover:xl:text-primary transition duration-300 cursor-pointer"
+          className="hover:text-primary transition duration-300"
         />
       </button>
     </form>
