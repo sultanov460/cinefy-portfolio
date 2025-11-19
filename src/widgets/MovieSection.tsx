@@ -44,13 +44,16 @@ export const MovieSection = ({ movies, title }: MovieSectionProps) => {
   }, [slider]);
 
   return (
-    <div className="flex flex-col gap-4 mt-20 mx-5 ">
+    <div className="flex flex-col gap-4 mt-20 mx-5 pb-10">
       <h1 className="font-bold text-3xl md:text-5xl text-center md:text-left tracking-[3px]">
         {title}
       </h1>
       <div ref={sliderRef} className="keen-slider">
         {movies.map((movie: Movie | Series) => (
-          <div key={movie.id} className="keen-slider__slide">
+          <div
+            key={movie.id}
+            className="keen-slider__slide flex justify-center items-center"
+          >
             {movie.media_type === "tv" ? (
               <SeriesCard series={movie as Series} />
             ) : (

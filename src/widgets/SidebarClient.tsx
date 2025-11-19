@@ -25,7 +25,7 @@ const SidebarClient = ({ genres }: GenresListProps) => {
   return (
     <>
       {/* MOBILE TOP BAR */}
-      <div className="lg:hidden flex items-center justify-between p-3.5 border-b border-primary sticky top-0 bg-black/80 z-50">
+      <div className="xl:hidden  flex items-center justify-between p-3.5 border-b border-primary sticky top-0  bg-black/80 backdrop-blur-sm z-50">
         <Link href={"/"} className="font-bold text-4xl">
           Cin<span className="text-primary">efy</span>
         </Link>
@@ -38,11 +38,11 @@ const SidebarClient = ({ genres }: GenresListProps) => {
       {/* MOBILE SIDEBAR */}
       <div
         className={`
-          fixed top-0 left-0 h-full w-1/2 bg-black border-r border-gray-700
+          fixed top-0 left-0 h-full w-full bg-black border-r border-gray-700
           px-4 py-12 flex flex-col justify-between gap-10 z-40 mt-10
           overflow-y-auto
           transform transition-transform duration-300
-          lg:hidden
+          xl:hidden
           ${open ? "translate-x-0" : "-translate-x-full"}
         `}
       >
@@ -56,18 +56,18 @@ const SidebarClient = ({ genres }: GenresListProps) => {
       {/* MOBILE BACKDROP */}
       {open && (
         <div
-          className="fixed inset-0 bg-black/50 z-30 lg:hidden"
+          className="fixed inset-0 bg-black/50 z-30 xl:hidden"
           onClick={() => setOpen(false)}
         />
       )}
       {/* DESKTOP SIDEBAR */}
-      <div className="hidden lg:flex px-4 flex-col justify-between gap-10 py-12 w-1/5 z-1 border-r border-gray-700 overflow-auto h-screen">
+      <div className="hidden xl:flex px-4 flex-col justify-between gap-10 py-12 w-1/5 z-1 border-r border-gray-700 overflow-auto h-screen">
         <Link href={"/"} className="font-bold text-5xl">
           Cin<span className="text-primary">efy</span>
         </Link>
 
-        <SearchBar />
-        <GenresList genres={genres} />
+        <SearchBar closeSidebar={closeSidebar} />
+        <GenresList closeSidebar={closeSidebar} genres={genres} />
         <SidebarSocials />
 
         <span className="text-center">&copy; Copyright 2025</span>
