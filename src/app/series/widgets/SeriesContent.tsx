@@ -9,13 +9,13 @@ interface SeriesContentProps {
 export const SeriesContent = ({ series }: SeriesContentProps) => {
   return (
     <Container className="flex flex-col items-center justify-center gap-10 mb-20">
-      <div className="flex gap-12 items-center">
+      <div className="flex flex-col lg:flex-row gap-12 items-center">
         <img
           src={"https://www.themoviedb.org/t/p/w300" + series.poster_path}
           alt={series.name}
           className="rounded-3xl border"
         />
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-5 items-center justify-center text-center xl:justify-baseline xl:text-left xl:items-baseline">
           <h1 className="text-4xl font-bold">{series.name}</h1>
           <div className="flex gap-5 text-[#ccc]">
             <p className="flex items-center gap-1">
@@ -31,7 +31,11 @@ export const SeriesContent = ({ series }: SeriesContentProps) => {
           </div>
           <div className="flex gap-5 text-[#ccc]">
             {series.genres.map((genre) => (
-              <Link className='xl:hover:text-primary xl:hover:underline font-medium' key={genre.id} href={`/genre/${genre.id} `}>
+              <Link
+                className="xl:hover:text-primary xl:hover:underline font-medium"
+                key={genre.id}
+                href={`/genre/${genre.id} `}
+              >
                 {genre.name}
               </Link>
             ))}
@@ -45,13 +49,15 @@ export const SeriesContent = ({ series }: SeriesContentProps) => {
           {series.status && (
             <div>
               <span className="text-[#ccc]">Status: </span>
-              <span className='text-lg font-medium'>{series.status}</span>
+              <span className="text-lg font-medium">{series.status}</span>
             </div>
           )}
         </div>
       </div>
       {series.overview && (
-        <p className="text-center text-xl font-medium">{series.overview}</p>
+        <p className="text-center text-xl font-medium px-5">
+          {series.overview}
+        </p>
       )}
     </Container>
   );

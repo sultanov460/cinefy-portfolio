@@ -4,12 +4,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 interface GenresListProps {
   genres: Genre[];
+  closeSidebar: () => void;
 }
 
-const GenresList = ({ genres }: GenresListProps) => {
+const GenresList = ({ genres, closeSidebar }: GenresListProps) => {
   const pathname = usePathname();
   return (
-    <div className="flex flex-col gap-4 px-5">
+    <div className="flex flex-col gap-4">
       <h5 className="font-bold text-2xl">Genres</h5>
       <div className="flex flex-col gap-3">
         {genres.map((genre: Genre) => {
@@ -18,6 +19,7 @@ const GenresList = ({ genres }: GenresListProps) => {
             <Link
               href={`/genre/${genre.id} `}
               key={genre.id}
+              onClick={closeSidebar}
               className={`text-lg transition duration-300 ${
                 isActive
                   ? "text-primary font-semibold"

@@ -10,13 +10,13 @@ interface ActorDetailsProps {
 export const ActorDetails = ({ actor }: ActorDetailsProps) => {
   return (
     <Container className="flex flex-col items-center justify-center gap-10 mb-20">
-      <div className="flex gap-12 items-center">
+      <div className="flex flex-col xl:flex-row gap-12 xl:items-center">
         <img
           src={"https://www.themoviedb.org/t/p/w300" + actor.profile_path}
           alt={actor.name}
           className="rounded-3xl border"
         />
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-5 justify-center items-center text-center xl:justify-baseline xl:items-baseline xl:text-left">
           <h1 className="text-4xl font-bold">{actor.name}</h1>
           <div className="flex flex-col gap-2.5">
             <p className="text-[#ccc]">Known for:</p>
@@ -49,7 +49,9 @@ export const ActorDetails = ({ actor }: ActorDetailsProps) => {
         </div>
       </div>
       <div>
-        <p className="text-center font-medium text-lg">{actor.biography}</p>
+        <p className="text-center font-medium text-lg px-5">
+          {actor.biography}
+        </p>
       </div>
     </Container>
   );
